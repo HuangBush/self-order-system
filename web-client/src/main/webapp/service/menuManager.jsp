@@ -42,7 +42,7 @@
 		  
 		  table.render({
 		    elem: '#test'
-		    ,url:'${pageContext.request.contextPath }/queryAllMenu.action'
+		    ,url:'${pageContext.request.contextPath }/menus'
 		    ,toolbar: '#toolbarDemo'
 			,height:540
 			,width:830
@@ -68,22 +68,34 @@
 		    var data = obj.data;
 		    //console.log(obj)
 		    if(obj.event === 'del'){
-		      layer.confirm('确定真的删除？', function(index){
-		      	$.post("${pageContext.request.contextPath}/deleteMenu.action?m_id="+data.m_id+"");
+		      layer.confirm('确定真的下架？', function(index){
+		      	//$.put("${pageContext.request.contextPath}/menu?m_id="+data.m_id+"&m_position=3");
+			    $.ajax({
+				   url:"${pageContext.request.contextPath}/menu?m_id="+data.m_id+"&m_position=3",
+				   type:"PUT"
+			    });
 		      	obj.del();
         		layer.close(index);
         		window.location.href="${pageContext.request.contextPath}/service/menuManager.jsp";
 		      });
 		    }else if(obj.event === 'special'){
 		    layer.confirm('确定设为推荐？', function(index){
-		    	$.post("${pageContext.request.contextPath}/specialMenu.action?m_id="+data.m_id+"");
+		    	//$.put("${pageContext.request.contextPath}/menu?m_id="+data.m_id+"&m_position=2");
+				$.ajax({
+					url:"${pageContext.request.contextPath}/menu?m_id="+data.m_id+"&m_position=2",
+					type:"PUT"
+				});
 		    	obj.del();
         		layer.close(index);
 			    window.location.href="${pageContext.request.contextPath}/service/menuManager.jsp";
         	});
 		    }else if(obj.event === 'add'){
 		    	layer.confirm('确定设为在售？', function(index){
-		    	$.post("${pageContext.request.contextPath}/onsaleMenu.action?m_id="+data.m_id+"");
+		    	//$.put("${pageContext.request.contextPath}/menu?m_id="+data.m_id+"&m_position=0");
+		    	$.ajax({
+					url:"${pageContext.request.contextPath}/menu?m_id="+data.m_id+"&m_position=0",
+					type:"PUT"
+				});
 		    	obj.del();
         		layer.close(index);
 			    window.location.href="${pageContext.request.contextPath}/service/menuManager.jsp";
@@ -96,7 +108,7 @@
 		               shadeClose:true,
 		               title: "修改菜品信息",
 		               area: ['450px', '550px'],
-		               content:'${pageContext.request.contextPath }/queryMenuById.action?m_id='+data.m_id,
+		               content:'${pageContext.request.contextPath }/menu?m_id='+data.m_id,
 		               end: function() {
         				//刷新页面, 
 						location.reload();

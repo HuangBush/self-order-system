@@ -102,12 +102,12 @@
 		  //执行实例
 		  var uploadInst = upload.render({
 		    elem: '#test1' //绑定元素
-		    ,url: '${pageContext.request.contextPath}/uploadPicture.action' //上传接口
+		    ,url: '${pageContext.request.contextPath}/uploadPicture' //上传接口
 		    ,done: function(res){
 		    	$('#pic').html("");
 		    	$('#updateImg').html("");
 			      $('#updateImg').append(
-				'<a> <img  width="200" height="100" src="${pageContext.request.contextPath }/' +
+				'<a> <img  width="200" height="100" src="${pageContext.request.contextPath }' +
 				res.path +
 				'" data-fileid="' +
 				res.path +
@@ -124,8 +124,8 @@
 	$("#btn_update").click(function(){
             var form = new FormData(document.getElementById("fm"));
               $.ajax({
-                url:"${pageContext.request.contextPath }/updateMenu.action",
-                type:"post",
+                url:"${pageContext.request.contextPath }/menu",
+                type:"PUT",
                 data:form,
                 processData:false,
                 contentType:false,

@@ -24,7 +24,7 @@
     <div class="layui-col-md12" style="margin-top:60px;padding-top:20px">
     	<div style="color:white;"><center><h1>新增菜品</h1></center></div>
     	<div style="width:50%;margin:50px auto">
-    		<form class="layui-form layui-form-pane" action="${pageContext.request.contextPath }/addNewMenu.action" method="post">
+    		<form class="layui-form layui-form-pane" action="${pageContext.request.contextPath }/menu" method="POST">
 			  <div class="layui-form-item">
 			    <label class="layui-form-label">菜品</label>
 			    <div class="layui-input-block">
@@ -78,11 +78,11 @@
 				  //执行实例
 				  var uploadInst = upload.render({
 				    elem: '#test1' //绑定元素
-				    ,url: '${pageContext.request.contextPath}/uploadPicture.action' //上传接口
+				    ,url: '${pageContext.request.contextPath}/uploadPicture' //上传接口
 				    ,done: function(res){
 				    	$('#updateImg').html("");
 					      $('#updateImg').append(
-						'<a> <img  width="200" height="100" src="${pageContext.request.contextPath }/' +
+						'<a> <img  width="200" height="100" src="${pageContext.request.contextPath }' +
 						res.path +
 						'" data-fileid="' +
 						res.path +
