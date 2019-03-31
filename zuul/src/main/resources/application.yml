@@ -1,0 +1,24 @@
+#进行注册
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+
+server:
+  port: 8799
+
+spring:
+  application:
+    name: self-zuul
+
+#网关配置
+zuul:
+  routes:
+    api-a:
+      path: /api-order/** #访问路径
+      service-id: service-order #跳转的路径 目前是跳转到eureka
+
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
