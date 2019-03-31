@@ -105,13 +105,13 @@ layui.use('form', function(){
 	$("#btn-update").click(function(){
 			//layer.closeAll('iframe');
             var form = new FormData(document.getElementById("emp"));
-            alert("form----"+form);
+            //alert("form----"+form);
 //             var req = new XMLHttpRequest();
 //             req.open("post", "${pageContext.request.contextPath }/updateEmployeeMsg.action", false);
 //             req.send(form);
             $.ajax({
-                url:"${pageContext.request.contextPath }/updateEmployeeMsg.action",
-                type:"post",
+                url:"${pageContext.request.contextPath }/employee",
+                type:"PUT",
                 data:form,
                 processData:false,
                 contentType:false,
@@ -123,11 +123,10 @@ layui.use('form', function(){
                     //console.log("over..");
                 },
                 error:function(e){
-                    alert("错误！！");
                     window.clearInterval(timer);
                 }
-            });        
-			
+            });
+        parent.layer.closeAll();//关闭弹窗
 	
 	});
 </script>

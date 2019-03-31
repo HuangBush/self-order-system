@@ -53,7 +53,7 @@ layui.use('table', function(){
 	  
 	table.render({
 	elem: '#test'
-	,url:'${pageContext.request.contextPath }/queryAllEmployee.action'
+	,url:'${pageContext.request.contextPath }/allEmployee'
 	,toolbar: '#toolbarDemo'
 	,height:550
 	,width:1350
@@ -87,8 +87,8 @@ layui.use('table', function(){
        var keyType= $("#key_type option:selected").val();
       //执行重载
       table.reload('testReload', {
-      method: 'post'
-      ,url:'${pageContext.request.contextPath }/queryEmployeeMsgByIDorTel.action'
+      method: 'GET'
+      ,url:'${pageContext.request.contextPath }/employees'
         ,where: {
          // key: {
            keyWord:keyWord,
@@ -171,30 +171,27 @@ layui.use('table', function(){
     if(obj.event === 'del'){
       layer.confirm('确定真的删除？', function(index){
     	  $.ajax({
-              url: "${pageContext.request.contextPath }/delEmployeeMsg.action",
-              type: "POST",
-              data:{"e_id":data.e_id},
-              dataType: "json",                
-                 success: function(data){ 
-                  if(data == 0){    
-                      layer.msg(data.e_id);
-                       layer.msg("删除失败", {icon: 5});                        
-                  }else{ 
-                      layer.msg(data.e_id);
+              url: "${pageContext.request.contextPath }/employee",
+              type: "PUT",
+              data:{"e_id":data.e_id,"e_position":1},
+              dataType: "text",
+                 success: function(data){
+                      //layer.msg(data.e_id);
                          //删除这一行
-                      obj.del();
+                        // obj.del();
                          //关闭弹框
                       layer.close(index);
                       layer.msg("删除成功", {icon: 6});
                       layer.closeAll();
                     parent.location.reload();
                       Load(); //删除完需要加载数据
-                      }
+                  },
+              error:function(){
+                  layer.msg("删除失败", {icon: 6});
+                  layer.close(index);
+                  parent.location.reload();
+                  Load(); //删除完需要加载数据
               },
-              //error:function(){
-               //   alert(data);
-             // },
-              
           });
         });
     }else if(obj.event === 'edit'){
@@ -205,7 +202,8 @@ layui.use('table', function(){
                shadeClose:true,
                title: "修改员工信息",
                area: ['450px', '550px'],
-               content:'${pageContext.request.contextPath }/queryEmployeeById.action?e_id='+data.e_id,
+               //这里是get请求
+               content:'${pageContext.request.contextPath }/employee?e_id='+data.e_id,
                end: function() {
         		//刷新页面, 
 				location.reload();

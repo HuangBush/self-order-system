@@ -5,3 +5,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8888/eureka/
+
+spring:
+  application:
+    name: client-web

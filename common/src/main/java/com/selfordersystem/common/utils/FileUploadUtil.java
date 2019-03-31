@@ -15,7 +15,6 @@ public class FileUploadUtil {
 	/**
 	 * 处理单个文件 MultipartFile[] myfile
 	 * @param myfile
-	 * @param model
 	 * @param request
 	 * @return 返回文件上传后的文件相对路径
 	 * @throws IllegalStateException
@@ -53,8 +52,6 @@ public class FileUploadUtil {
 	
 	/**
 	 * 处理多个文件 MultipartFile[] myfile
-	 * @param myfile
-	 * @param model
 	 * @param request
 	 * @return fileNameList  返回上传的文件的列表
 	 * @throws IllegalStateException

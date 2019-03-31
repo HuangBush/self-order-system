@@ -58,10 +58,8 @@ public interface EmployeeMapper {
             "<if test='e_regdate != null'>"+
             "e_regdate = #{e_regdate},"+
             "</if>"+
-            "</if>"+
             "<if test='e_job != null'>"+
             "e_job = #{e_job},"+
-            "</if>"+
             "</if>"+
             "<if test='e_salary != null'>"+
             "e_salary = #{e_salary},"+

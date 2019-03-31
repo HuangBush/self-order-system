@@ -163,8 +163,8 @@ layui.use('form', function(){
             var e_tel = $("#e_tel").val();
 
             $.ajax({
-                url:"${pageContext.request.contextPath }/addEmployeeMsg.action",
-                type:"post",
+                url:"${pageContext.request.contextPath }/employee",
+                type:"POST",
                 contentType:"application/json;charset=utf-8",
                 data:JSON.stringify({e_name:e_name,e_password:e_password,e_job:e_job,e_regdate:e_regdate,e_address:e_address,e_salary:e_salary,e_tel:e_tel}),
                 success:function(data){
@@ -174,11 +174,11 @@ layui.use('form', function(){
                 	//layer.closeAll();
                     //window.clearInterval(timer);
                     //console.log("over..");
-                },
-                error:function(e){
+                }
+                /*error:function(e){
                     alert("错误！！");
                     window.clearInterval(timer);
-                }
+                }*/
             });        
 			//alert("添加成功----1111111111111");
 		parent.layer.closeAll();//关闭弹窗
