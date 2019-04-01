@@ -9,14 +9,23 @@ server:
 
 spring:
   application:
-    name: self-zuul
+    name: service-zuul
 
 #网关配置
 zuul:
   routes:
     api-a:
-      path: /api-order/** #访问路径
-      service-id: service-order #跳转的路径 目前是跳转到eureka
+      path: /api-desk/** #访问路径
+      service-id: service-desk #跳转的路径 目前是跳转到eureka
+    api-b:
+      path: /api-employee/** #访问路径
+      service-id: service-employee #跳转的路径 目前是跳转到eureka
+    api-c:
+      path: /api-menu/** #访问路径
+      service-id: service-menu #跳转的路径 目前是跳转到eureka
+    api-w:
+      path: /api-web/** #访问路径
+      service-id: client-web #跳转的路径 目前是跳转到eureka
 
 #ribbon的超时时间
 ribbon:

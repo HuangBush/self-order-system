@@ -13,7 +13,7 @@ import java.util.List;
  * @description
  * @date 2019/3/30
  */
-@FeignClient("service-desk")
+@FeignClient("service-zuul/api-desk/")
 public interface DeskClient {
 
     @GetMapping("getAllDesk")

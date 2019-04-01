@@ -17,7 +17,7 @@ import java.util.List;
  * @description
  * @date 2019/3/31
  */
-@FeignClient("service-employee")
+@FeignClient("service-zuul/api-employee/")
 public interface EmployeeClient {
 
     /**

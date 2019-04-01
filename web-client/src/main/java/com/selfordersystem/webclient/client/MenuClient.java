@@ -18,7 +18,7 @@ import java.io.IOException;
  * @description
  * @date 2019/3/31
  */
-@FeignClient("service-menu")
+@FeignClient("service-zuul/api-menu/")//使用网关地址
 public interface MenuClient {
 
     @GetMapping("getMenuPage")
