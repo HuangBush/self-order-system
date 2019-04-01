@@ -22,24 +22,24 @@
   
   <body style="background-color: #393D49">
   <jsp:include page="nav.jsp"></jsp:include>
-  <div class="demoTable" style="margin-left: 330px; margin-top: 80px;">
-    <div class="layui-inline">
+  <div class="demoTable" style="margin-left: 150px; margin-top: 80px;">
+    <%--<div class="layui-inline">
         <input class="layui-input" name="keyWord" id="keyWord" autocomplete="off">
-    </div>
-    <span class="input-group-btn">
+    </div>--%>
+    <%--<span class="input-group-btn">
        <select name="keyType" id="key_type" class="layui-btn">
           <option value="os_id" selected="selected">订单编号</option>
           <option value="d_id">桌面编号</option>
        </select>
     </span>
-    <button class="layui-btn" data-type="reload">搜索</button>
-    <div class="layui-inline">
+    <button class="layui-btn" data-type="reload">搜索</button>--%>
+    <%--<div class="layui-inline">
     	<div class="layui-input-block">
         			 <input type="text" name="os_regtime" id="date1" autocomplete="off" class="layui-input" placeholder="点击选择订单时间">
       	</div>
     </div>
     <button class="layui-btn" data-type="reload" id="btn">搜索</button>
-    </div>
+    </div>--%>
    <div style="margin-left:330px;">
     <table class="layui-hide" id="test" lay-filter="test"></table>
  	</div>
@@ -55,7 +55,7 @@ layui.use('table', function(){
   
   table.render({
     elem: '#test'
-    ,url:'${pageContext.request.contextPath }/queryAllOrderitemsMsg.action'
+    ,url:'${pageContext.request.contextPath }/orders'
     ,toolbar: '#toolbarDemo'
     ,id: 'testReload'
 	,height:550
@@ -67,7 +67,7 @@ layui.use('table', function(){
       ,{field:'d_id', title:'桌号', width:80, sort: true}
       ,{field:'os_allprice', title:'消费金额', width:100, sort: true}
       ,{field:'os_position', title:'状态', width:80,templet:'#os_position'}
-      ,{field:'os_regtime', title:'订单创建时间', width:130, sort: true,templet:'#os_regtime'}
+      ,{field:'os_regtime', title:'订单创建时间', width:130, sort: true}
       ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:115}
     ]]
     ,page: true
@@ -79,7 +79,7 @@ layui.use('table', function(){
 	,limits: [10, 20, 30, 40, 50]
   });
   
-  var $ = layui.$, active = {
+ /* var $ = layui.$, active = {
     reload: function(){
        var keyWord= $("#keyWord").val();
        var keyType= $("#key_type option:selected").val();
@@ -98,23 +98,27 @@ layui.use('table', function(){
         }
       });
     }
-  };
+  };*/
   
-  $('.demoTable .layui-btn').on('click', function(){
+ /* $('#btn').on('click', function(){
     var type = $(this).data('type');
     active[type] ? active[type].call(this) : '';
-  });
-  
+  });*/
+   /* $('#btn').on('click', function(){
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+    });*/
+
   var $ = layui.$, active = {
     reload: function(){
        var regtime= $("#date1").val();
       //执行重载
       table.reload('testReload', {
-      method: 'post'
-      ,url:'${pageContext.request.contextPath }/queryOrderitemsMsgByOsregtime.action'
+      method: 'GET'
+      ,url:'${pageContext.request.contextPath }/order'
         ,where: {
          // key: {
-           regtime:regtime,
+           regtime:os_regtime,
           //}
         }
         ,page: {
@@ -123,11 +127,8 @@ layui.use('table', function(){
       });
     }
   };
-  
-  $('#btn').on('click', function(){
-    var type = $(this).data('type');
-    active[type] ? active[type].call(this) : '';
-  });
+
+
   
   
   //头工具栏事件
@@ -187,8 +188,8 @@ layui.use('table', function(){
     if(obj.event === 'del'){
       layer.confirm('确定真的删除？', function(index){
     	  $.ajax({
-              url: "${pageContext.request.contextPath }/delOrderitemsMsg.action",
-              type: "POST",
+              url: "${pageContext.request.contextPath }/order",
+              type: "DELETE",
               data:{"os_id":data.os_id},
               dataType: "json",                
                  success: function(data){ 
@@ -222,7 +223,7 @@ layui.use('table', function(){
                shadeClose:true,
                title: "订单详细信息",
                area: ['760px', '570px'],
-               content:'${pageContext.request.contextPath }/queryOrderitemMsgByOsid.action?os_id='+data.os_id,
+               content:'${pageContext.request.contextPath }/orderitem?os_id='+data.os_id,
            });
            //动态向表传递赋值可以参看文章进行修改界面的更新前数据的显示，当然也是异步请求的要数据的修改数据的获取
            //setFormValue(obj,data);
@@ -271,8 +272,13 @@ layui.use('table', function(){
     		{{#
     		var date = new Date();
     		date.setTime(d.os_regtime);
-   	 		return date.Format("yyyy-MM-dd"); 
-    		}} 
+   	 		return date.Format("yyyy-MM-dd");
+           <%-- var dateee = new Date(); 
+            dateee.setTime(d.os_regtime);
+            var date = new Date(+new Date(dateee)+8*3600*1000).toISOString().replace(/T/g,' ').replace(/\.[\d]{3}Z/,'')
+            return date; --%>
+    		}}
+              
     </script>
     <script type="text/javascript">
     layui.use(['form', 'layedit', 'laydate'], function(){
