@@ -71,10 +71,10 @@
      			<br/>
      			<div>
      				<button class="layui-btn " style="width: 45%;margin-left: 5%;float: left;">
-     					<a href="${pageContext.request.contextPath }/ismydesk.do">我想加菜</a>
+     					<a href="${pageContext.request.contextPath }/addOrder">我想加菜</a>
      				</button>
 	 	 			<button class="layui-btn layui-btn-primary" style="width: 45%;margin-left: 5%;float: left;">
-	 	 				<a href="${pageContext.request.contextPath }/leaveDesk.do">结束用餐</a>
+	 	 				<a href="${pageContext.request.contextPath }/leaveDesk">结束用餐</a>
 	 	 			</button>
      			</div>
      		</div>

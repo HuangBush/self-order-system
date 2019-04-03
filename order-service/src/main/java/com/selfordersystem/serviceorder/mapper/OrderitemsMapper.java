@@ -20,13 +20,21 @@ public interface OrderitemsMapper {
      * @param d_id
      * @return
      */
-    @Select("select * from Orderitems where d_id = #{d_id} and os_position = #{os_position} ")
+    @Select("select * from Orderitems where d_id = #{d_id} and os_position = #{os_position} limit 1")
     @Results({
             @Result(column="os_id",property="oiList",
                     many=@Many(select="com.selfordersystem.serviceorder.mapper.OrderitemMapper.queryItemByOsid"))
 
     })
     Orderitems queryOrderAndMenuMsgByDidAndPosition(@Param("d_id")Long d_id, @Param("os_position")long os_position);
+
+    /***
+     * 根据餐桌id和总订单状态总订单
+     * @param d_id
+     * @return
+     */
+    @Select("select * from Orderitems where d_id = #{d_id} and os_position = #{os_position} limit 1")
+    Orderitems queryOrderAndMenuMsgByDidAndPosition2(@Param("d_id")Long d_id, @Param("os_position")long os_position);
 
 
     /************   订单后台管理方法     *****************/

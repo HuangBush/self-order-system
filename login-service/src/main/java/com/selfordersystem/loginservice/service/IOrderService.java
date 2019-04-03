@@ -76,4 +76,12 @@ public interface IOrderService {
      */
     @RequestMapping("updateOrderitemsPositionById")
     public boolean updateOrderitemsPositionById(@RequestParam("os_position") long os_position,@RequestParam("os_id") long os_id);
+
+    /***
+     * 根据餐桌id和总订单状态总订单
+     * @param d_id
+     * @return
+             */
+    @RequestMapping("queryOrderAndMenuMsgByDidAndPosition2")
+    Orderitems queryOrderAndMenuMsgByDidAndPosition2(@RequestParam("d_id") Long d_id,@RequestParam("os_position") long os_position);
 }

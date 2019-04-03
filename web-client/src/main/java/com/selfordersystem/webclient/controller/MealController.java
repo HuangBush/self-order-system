@@ -100,6 +100,8 @@ public class MealController {
         //Map<Integer,Object> map = mealClient.mydesk(1002);
         if(orderitems == null){
             return "redirect:client/mydesk.jsp";
+        }else if(orderitems.getos_allprice() == 0){
+            return "redirect:client/mydesk.jsp";
         }else {
             List<Orderitem> oiList = orderitems.getOiList();
             orderitems.setos_id(oiList.get(0).getos_id());

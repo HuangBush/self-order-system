@@ -162,4 +162,13 @@ public class OrderServiceImpl implements IOrderService {
     public int updateOrderitemPositionByOiid(long oi_position, long oi_id) {
         return orderMapper.updateOrderitemPositionByOiid(oi_position,oi_id);
     }
+
+    /***
+     * 根据餐桌id和总订单状态总订单
+     * @param d_id
+     * @return
+     */
+    public Orderitems queryOrderAndMenuMsgByDidAndPosition2(Long d_id, long os_position) {
+        return orderMapper.queryOrderAndMenuMsgByDidAndPosition2(d_id,os_position);
+    }
 }

@@ -94,4 +94,11 @@ public interface IOrderService {
      * @return
      */
     int updateOrderitemPositionByOiid(long oi_position,long oi_id);
+
+    /***
+     * 根据餐桌id和总订单状态总订单
+     * @param d_id
+     * @return
+     */
+    Orderitems queryOrderAndMenuMsgByDidAndPosition2(Long d_id, long os_position);
 }

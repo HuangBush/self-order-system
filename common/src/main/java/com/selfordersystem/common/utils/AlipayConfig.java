@@ -7,10 +7,10 @@ public class AlipayConfig {
 	public static String RSA_PRIVATE_KEY = "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDjv8e3+ZgBsX/WXUhKaO8GyBB0grg27T7y2vlTLudPv59gZZt3XFO/egcZ2WfNAtB64fww80QP5eVrtgtKttGuSLuRyptuoN5YRVtawLXYU/PBQXoxUBA8pZqJ4md5N7mOSS67islSz2JNCL2TlcieHvlu1dwd4b57AnbuDaJKFJq95Eh0U/JqFGMAfjZ+7r0Rl4utnpNsohKCCGhlusBSCuPvbzj4mFBso3DqPh/4nhLMVdKz4XfT+0OgOybDjsRnc118pHrrpC7uMNHfG7Lm00FygCpbd4z7mgxV3CyxzzDlTnC2wEWxyd8UcZoB1hTdEOk1xv2WJ5b0wB8eBv25AgMBAAECggEBAJus0pqZ3GKD7ssbdjeOpJwxErZhSAQbhSTBsx09+VTUud9NdMhQ7tn6UnJD3iUPYGwunpDjJ8nqLjjC9dL7RjZodvX/1OD4yyLxPbG5+lLFh9+4nwqoHIEn/Yt0m6ALDCYLNgtxoY2ePiZD7Dm+b6RNrdgqDMzMKsSweZTc8urJAmWyFwIkHqf6JNdeICPMjSYd1IZFhc9NKOrf4mIpFu+J+Y3/nQtzvtvWHTXGGMzITHAhLrDWxEN7glmFrFZAXJEZBNlEQ9t0e1p1RhcJkf2JlZ6Rp+0OcHUV94u5rxYdVCzeHaA9pbKe2K+S3EHtmW6MeEMf5g4qrDeVnWzHGqUCgYEA+yUrzTeGXy5GI1qSkR3ywjAzbuLADg7AW/LvTaA5vHqlFVAWMNmVG7c0Vbgam6r8Y0vdRuAsKVkHj+qDEmzCXQPfK2y/lIbgO24zK2CzLh86dQgAFcd5+x5JweTyJ6OJBHy3216DOz3qAypWxP6pGEk/EOM3ph1f4+5PsQVcimcCgYEA6CbUiVEvv6LTO5xTZJYcD/yR9SS84ktAhiCA0wd//dTpjXPYxX5SrZIVTkBX+WRLnxNPu6oTAme6p0ZIa92HeX2MeDmjnuBKsVX8A0lrCHB2R/AM8DwETe/cbBorfPHndPdxHAakkW/yA0ZTM9k5pH8Tdj/q8mECNDKzQ1e5Yt8CgYEA+svl7+tw7n/hXtDF6NEFadKEqkkaDW/BvJDfVJ+ayJOZY600W9gMxT6wrqFJQQcBP4+1C2A1+ZyEpr1D4xRlDEofhNf2gTYnmnGz+693f6mD0PcKTrWDJLjcYxpkkB0JaUe6uwCpAHIVzM9tExBUgII0zoJ5QhO3fICxaE+4WCUCgYBdlYGqFVtNQmMqrZsEemq3mxZvny6xfqp1J1cnOufCuHip+CBThNfpdnE2SUPtmhvN9af3u9jL6GrbEb8SFIyPUig1Mu8dlccmc8YSwR7vmP5lg4SDt334uQ+/WFFdndqzUSh8psTiiCEkZs4VoaTWBhAfZCbfLHIJ/sI7DHsEOwKBgBtQdWmPZX45Hyk1xSSNcHwxBVAlH2iOAEEQnUPkH0suZvYcUxdnuWbHbIjyp0mvzvCFap7EMnIIirhiXI8x+duix9DY+t6uS+XyETgyJ6wm6kFAQNkn8D8MgOjHFvfZc0uQJeX9e7g72D/KEjg6gKzKOJf85mEHKMYrafqhpSXy";
 
 	// 服务器异步通知页面路径 需http://或者https://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String notify_url = "http://192.168.43.112:8082/food/client/notify_url.jsp";
+	public static String notify_url = "http://192.168.43.112:8088/client/notify_url.jsp";
 	// 页面跳转同步通知页面路径 需http://或者https://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问 商户可以自定义同步跳转地址
 	//"http://192.168.1.108:8082/food/returnMsg.action"    192.168.43.112
-	public static String return_url = "http://192.168.43.112:8084/returnMsg.do";
+	public static String return_url = "http://192.168.43.112:8088/returnMsg.do";
 	// 请求网关地址
 	public static String URL = "https://openapi.alipaydev.com/gateway.do";
 	// 编码

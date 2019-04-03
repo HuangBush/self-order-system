@@ -178,4 +178,13 @@ public class OrderServiceImpl implements IOrderService {
             return false;
         }
     }
+
+    /***
+     * 根据餐桌id和总订单状态总订单
+     * @param d_id
+     * @return
+     */
+    public Orderitems queryOrderAndMenuMsgByDidAndPosition2(Long d_id, long os_position) {
+        return orderitemsMapper.queryOrderAndMenuMsgByDidAndPosition2(d_id,os_position);
+    }
 }

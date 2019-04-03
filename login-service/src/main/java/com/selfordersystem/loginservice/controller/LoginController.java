@@ -235,9 +235,9 @@ public class LoginController {
     public boolean cleanNoPayMenu(@RequestBody Desk desk){
         boolean isD = false;
         //获取未付款的总订单
-        Orderitems os = orderService.queryOrderAndMenuMsgByDidAndPosition(desk.getd_id(),0);
+        Orderitems os = orderService.queryOrderAndMenuMsgByDidAndPosition2(desk.getd_id(),0);
         //获取总订单id
-        long os_id = os.getOiList().get(0).getos_id();
+        long os_id = os.getos_id();
         //获取其中的所有子订单
         List<Orderitem> oiList = os.getOiList();
         if(os != null){
@@ -281,11 +281,11 @@ public class LoginController {
             //获取所有子订单的信息，并将其状态修改为2 历史订单
             List<Orderitem> oiList = os.getOiList();
             int k = orderService.updateOrderitemPositionByOsid(2,os_id);
-            if(k ==1){
+            if(k >=1){
                 System.out.println("子订单状态修改为2 成功---------");
                 //将餐桌状态修改为0 空闲
                 int j = deskServiceImpl.updateDeskPositionByDid(0, desk.getd_id());
-                if(j == 1){
+                if(j >= 1){
                     System.out.println("餐桌状态修改成功++++++++++++++====");
                     //当所有删除订单信息删除成功后，再将desk的session删除
                     //session.removeAttribute("desk");//-----------------------

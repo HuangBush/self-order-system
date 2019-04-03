@@ -134,4 +134,12 @@ public interface OrderMapper {
      */
     @Update("update orderitem set oi_position = #{oi_position} where oi_id = #{oi_id}")
     int updateOrderitemPositionByOiid(@Param("oi_position")long oi_position,@Param("oi_id")long oi_id);
+
+    /***
+     * 根据餐桌id和总订单状态总订单
+     * @param d_id
+     * @return
+     */
+    @Select("select * from Orderitems where d_id = #{d_id} and os_position = #{os_position} limit 1")
+    Orderitems queryOrderAndMenuMsgByDidAndPosition2(@Param("d_id")Long d_id, @Param("os_position")long os_position);
 }

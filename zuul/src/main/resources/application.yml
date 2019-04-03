@@ -40,6 +40,9 @@ zuul:
     api-f:
       path: /api-meal/** #访问路径
       service-id: service-meal #跳转的路径 目前是跳转到eureka
+    api-g:
+      path: /api-pay/** #访问路径
+      service-id: service-pay #跳转的路径 目前是跳转到eureka
     api-w:
       path: /api-web/** #访问路径
       service-id: client-web #跳转的路径 目前是跳转到eureka

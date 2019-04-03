@@ -165,6 +165,7 @@ public class LoginController {
         System.out.println("获取我的餐桌信息");
         Desk desk = (Desk) session.getAttribute("desk");
         Orderitems os = loginClient.continueOrder(desk);
+        System.out.println("++++++++++++++"+os.toString());
         if (os == null) {
             System.out.println("未查询到总订单。请联系前台服务员");
             model.addAttribute("msg", "未查询到总订单。请联系前台服务员");
@@ -172,17 +173,21 @@ public class LoginController {
         }else {
             //获取总订单中的子订单 （子订单中要包含菜品的信息）
             List<Orderitem> oiList = os.getOiList();
-            os.setos_id(oiList.get(0).getos_id());
-            //计算该总订单各个子订单菜品的总数量
-            long bageNum = 0;
-            for (Orderitem orderitem : oiList) {
-                bageNum = orderitem.getoi_num()+bageNum;
+            if(oiList == null || oiList.size() == 0){
+                return "client/mydesk.jsp";
+            }else {
+                os.setos_id(oiList.get(0).getos_id());
+                //计算该总订单各个子订单菜品的总数量
+                long bageNum = 0;
+                for (Orderitem orderitem : oiList) {
+                    bageNum = orderitem.getoi_num()+bageNum;
+                }
+                model.addAttribute("bageNum", bageNum);
+                //存入总订单和子订单信息
+                model.addAttribute("oiList", oiList);
+                model.addAttribute("os", os);
+                return "client/mydesk.jsp";
             }
-            model.addAttribute("bageNum", bageNum);
-            //存入总订单和子订单信息
-            model.addAttribute("oiList", oiList);
-            model.addAttribute("os", os);
-            return "client/mydesk.jsp";
         }
     }
 

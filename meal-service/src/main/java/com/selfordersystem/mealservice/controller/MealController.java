@@ -128,7 +128,7 @@ public class MealController {
         //根据菜品id获取菜品信息
         Menu menu = menuServiceImpl.queryMenuById(m_id);
         //查询该餐桌是否有状态为0的总订单
-        Orderitems orderitems = orderServiceImpl.getOrderAllMsg(d_id,0);
+        Orderitems orderitems = orderServiceImpl.queryOrderAndMenuMsgByDidAndPosition2(d_id,0);
         //System.out.println("bbbbbbbb"+osList.get(0).getos_regtime());
         //如果没有则 创建一个该餐桌的总订单
         if(orderitems == null){
@@ -154,6 +154,7 @@ public class MealController {
         } else{
             long os_id = 0;
             if( orderitems.getos_id() == null){
+                System.out.println("____________"+orderitems.getos_id());
                 os_id = orderitems.getOiList().get(0).getos_id();
             }else {
                 os_id = orderitems.getos_id();
