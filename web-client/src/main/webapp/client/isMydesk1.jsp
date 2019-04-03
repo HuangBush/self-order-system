@@ -29,7 +29,7 @@
   		 <label class="layui-form-label" style="width: 95%;text-align: center;font-weight: 800;font-size: 16px;color:#ccc">时尚智能餐厅提醒您</label>
 	    <label class="layui-form-label" style="width: 95%;text-align: center;font-weight: 800;font-size: 16px;color:#ccc">发现${desk.d_name }有一个未付款的订单</label>
 	    <br/><br/><br/>
-	  	<button class="layui-btn layui-btn-primary" style="width: 80%;margin-left: 10%"><a href="${pageContext.request.contextPath }/mydesk.do">我是该桌的客人，不小心退出，继续选购。</a></button>
+	  	<button class="layui-btn layui-btn-primary" style="width: 80%;margin-left: 10%"><a href="${pageContext.request.contextPath }/continueOrder">我是该桌的客人，不小心退出，继续选购。</a></button>
 	  	<br/><br/>
 	  	<button class="layui-btn " style="width: 80%;margin-left: 10%"><a href="${pageContext.request.contextPath }/cleanNoPayMenu.do">我是刚来的客人，见此桌无人，重新选购。</a></button>
 	  	<div style="width: 100%;text-align: center;">

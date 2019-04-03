@@ -32,7 +32,7 @@ public interface OrderClient {
      * @return
      */
     @RequestMapping("deleteOrderitems")
-    boolean deleteOrderitems(@RequestParam("os_id") String os_id);
+    boolean deleteOrderitems(@RequestParam("os_id") long os_id);
 
     /**
      * 切换查询 总订单

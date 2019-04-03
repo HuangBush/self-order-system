@@ -149,7 +149,7 @@
 			</div>
 			<div class="login-login">
 				<div class="login-w">
-				<form class="layui-form"  action="${pageContext.request.contextPath }/AdminAndEmployeelogin.action">
+				<form class="layui-form"  action="${pageContext.request.contextPath }/login" method="post">
 					<div class="login-table">
 						<div class="layui-form-item">
 								<i class="layui-icon layui-icon-username" style="font-size: 30px; color: #1E9FFF;"></i> 

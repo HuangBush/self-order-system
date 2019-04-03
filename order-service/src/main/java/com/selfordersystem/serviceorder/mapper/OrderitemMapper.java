@@ -1,5 +1,6 @@
 package com.selfordersystem.serviceorder.mapper;
 
+import com.selfordersystem.common.entity.Menu;
 import com.selfordersystem.common.entity.Orderitem;
 import org.apache.ibatis.annotations.*;
 
@@ -58,9 +59,12 @@ public interface OrderitemMapper {
     @Select("select * from orderitem where os_id = #{os_id}")
     @Results({
             @Result(column="m_id",property="menu",
-                    one=@One(select="com.hyf.food.mapper.MenuMapper.queryMenuById"))
+                    one=@One(select="com.selfordersystem.serviceorder.mapper.OrderitemMapper.queryMenuByMid"))
     })
     List<Orderitem> queryItemByOsid(@Param("os_id")Long os_id);
+
+    @Select("select * from menu where m_id = #{m_id}")
+    Menu queryMenuByMid(long m_id);
 
 
     /***
@@ -125,4 +129,13 @@ public interface OrderitemMapper {
 			+ "</script>")*/
     @Update("update orderitem set os_id = #{os_id} where oi_id = #{oi_id}")
     int updateOrderitemOsidByOiid(@Param("os_id")long os_id,@Param("oi_id")long oi_id);
+
+    /**
+     * 根据总订单id修改子订单的状态
+     * @param os_position
+     * @param os_id
+     * @return
+     */
+    @Update("update orderitem  set oi_position = #{oi_position} where os_id = #{os_id}")
+    int updateOrderitemPositionByOsid(@Param("oi_position")long os_position,@Param("os_id")long os_id);
 }

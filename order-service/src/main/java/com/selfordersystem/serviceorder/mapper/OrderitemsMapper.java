@@ -28,22 +28,6 @@ public interface OrderitemsMapper {
     })
     Orderitems queryOrderAndMenuMsgByDidAndPosition(@Param("d_id")Long d_id, @Param("os_position")long os_position);
 
-    /***
-     * 根据状态和餐厅id查询仅查询总订单信息
-     * @param os_position
-     * @return
-     */
-    @Select("select * from orderitems where os_position=#{os_position} and d_id = #{d_id}")
-    List<Orderitems> queryOrderitemsByPositionAndDid(@Param("os_position")long os_position, @Param("d_id")long d_id);
-
-    /***
-     * 根据总订单id查询总订单信息
-     * 2/27
-     * @param os_id
-     * @return
-     */
-    @Select("select * from orderitems where os_id = #{os_id}")
-    Orderitems queryOrderitsmByOsid(@Param("os_id")long os_id);
 
     /************   订单后台管理方法     *****************/
 
@@ -53,6 +37,9 @@ public interface OrderitemsMapper {
      * 根据日期查询  只传入日期
      * 根据状态查询  只传入状态
      * 根据桌面id查询 只传入桌面id
+     * 根据总订单id查询 只传入总订单id
+     * 若要以上几种联合查询 请一起传入
+     *
      * @param orderitems
      * @return
      */
@@ -65,6 +52,9 @@ public interface OrderitemsMapper {
             "</if>" +
             "<if test='d_id != null'>" +
             "and d_id = #{d_id}" +
+            "</if>" +
+            "<if test='os_id != null'>" +
+            "and os_id = #{os_id}" +
             "</if>" +
             "</script>")
     List<Orderitems> queryAllOrderitems(Orderitems orderitems);
@@ -84,6 +74,14 @@ public interface OrderitemsMapper {
      */
     @Update("update orderitems set os_position = 3 where os_id = #{os_id}")
     int deleteOrderitemsMsgByOsid(@Param("os_id")long os_id);
+
+    /***
+     * 修改总订单状态
+     * @param os_id
+     * @return
+     */
+    @Update("update orderitems set os_position = #{os_position} where os_id = #{os_id}")
+    int updateOrderitemsPositionById(@Param("os_position")long os_position,@Param("os_id")long os_id);
 
     /***
      * 按照分页获取内容

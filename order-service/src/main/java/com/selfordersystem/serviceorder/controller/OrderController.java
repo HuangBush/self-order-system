@@ -1,6 +1,7 @@
 package com.selfordersystem.serviceorder.controller;
 
 import com.selfordersystem.common.entity.Layui;
+import com.selfordersystem.common.entity.Orderitem;
 import com.selfordersystem.common.entity.Orderitems;
 import com.selfordersystem.common.entity.OredritemsTableModel;
 import com.selfordersystem.common.utils.PageUtils;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author huangyifeng.test@hand-china.com
@@ -78,13 +81,74 @@ public class OrderController {
     }
 
     /**
-     * 删除子订单信息
+     * 删除总订单信息
      *
      * @param os_id
      * @return
      */
     @RequestMapping("deleteOrderitems")
-    boolean deleteOrderitems(@RequestParam("os_id") String os_id) {
+    boolean deleteOrderitems(@RequestParam("os_id") long os_id) {
         return orderServiceImpl.delOrderitemsMsg(os_id);
+    }
+
+    /*                给其他服务调用              */
+    /***
+     * 动态查询总订单
+     * 查询所有订单  传入空值
+     * 根据日期查询  只传入日期
+     * 根据状态查询  只传入状态
+     * 根据桌面id查询 只传入桌面id
+     * 根据总订单id查询 只传入总订单id
+     * 若要以上几种联合查询 请一起传入
+     * @param orderitems
+     * @return
+     */
+    @RequestMapping("queryAllOrderitems")
+    public List<Orderitems> queryAllOrderitems(@RequestBody Orderitems orderitems) {
+        System.out.println("动态查询总订单");
+        return orderServiceImpl.queryAllOrderitems(orderitems);
+    }
+
+    /***
+     * 根据总订单id查找子订单信息(并获取菜品信息)
+     * @param os_id
+     * @return
+     */
+    @RequestMapping("queryItemByOsid")
+    List<Orderitem> queryItemByOsid(@RequestParam("os_id") Long os_id) {
+        System.out.println("根据总订单id查找子订单信息(并获取菜品信息)"+os_id);
+        return orderServiceImpl.queryItemByOsid(os_id);
+    }
+
+    /***
+     * 根据餐桌id和总订单状态总订单和所有子订单的信息 及其菜品信息
+     * @param d_id
+     * @return
+     */
+    @RequestMapping("queryOrderAndMenuMsgByDidAndPosition")
+    Orderitems queryOrderAndMenuMsgByDidAndPosition(@RequestParam("d_id") Long d_id, @RequestParam("os_position") long os_position) {
+        return orderServiceImpl.queryOrderAndMenuMsgByDidAndPosition(d_id,os_position);
+    }
+
+    /**
+     * 根据总订单id修改子订单的状态
+     *
+     * @param os_position
+     * @param os_id
+     * @return
+     */
+    @RequestMapping("updateOrderitemPositionByOsid")
+    int updateOrderitemPositionByOsid(@RequestParam("os_position") long os_position, @RequestParam("os_id") long os_id) {
+        return orderServiceImpl.updateOrderitemPositionByOsid(os_position,os_id);
+    }
+
+    /***
+     * 修改总订单状态
+     * @param os_id
+     * @return
+     */
+    @RequestMapping("updateOrderitemsPositionById")
+    public boolean updateOrderitemsPositionById(@RequestParam("os_position") long os_position, @RequestParam("os_id") long os_id){
+        return orderServiceImpl.updateOrderitemsPositionById(os_position,os_id);
     }
 }

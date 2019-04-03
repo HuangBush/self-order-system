@@ -56,7 +56,9 @@ public class DeskController {
      */
     @RequestMapping(value = "/getAllDesk",method = RequestMethod.GET)
     public List<Desk> getAllDesk(){
+        System.out.println("查询所有餐桌");
         List<Desk> deskList = dsekServiceImpl.queryAllDesk();
+        System.out.println("++++++++"+deskList.get(0));
         return deskList;
     }
 

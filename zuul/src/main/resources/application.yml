@@ -34,6 +34,9 @@ zuul:
     api-d:
       path: /api-order/** #访问路径
       service-id: service-order #跳转的路径 目前是跳转到eureka
+    api-e:
+      path: /api-login/** #访问路径
+      service-id: service-login #跳转的路径 目前是跳转到eureka
     api-w:
       path: /api-web/** #访问路径
       service-id: client-web #跳转的路径 目前是跳转到eureka

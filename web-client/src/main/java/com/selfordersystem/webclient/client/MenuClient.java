@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author huangyifeng.test@hand-china.com
@@ -49,5 +50,16 @@ public interface MenuClient {
      */
     @RequestMapping("updateMenu")
      boolean updateMenu(Menu menu) ;
+
+    /**
+     * 查询所有菜品：传空值
+     * 查询推荐菜品：只传m_position == 2
+     * 查询各类型菜品 ： 只传入 m_type == ?
+     *
+     * @param menu
+     * @return
+     */
+    @RequestMapping("getAllMenu")
+    List<Menu> getAllMenu(Menu menu);
 
 }

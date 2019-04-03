@@ -1,12 +1,14 @@
 package com.selfordersystem.serviceorder.service.impl;
 
 import com.selfordersystem.common.entity.Layui;
+import com.selfordersystem.common.entity.Orderitem;
 import com.selfordersystem.common.entity.Orderitems;
 import com.selfordersystem.common.entity.OredritemsTableModel;
 import com.selfordersystem.common.utils.PageUtils;
 import com.selfordersystem.serviceorder.mapper.OrderitemMapper;
 import com.selfordersystem.serviceorder.mapper.OrderitemsMapper;
 import com.selfordersystem.serviceorder.service.IOrderService;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -102,17 +104,77 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     /**
-     * 删除子订单信息
+     * 删除总订单信息
      *
      * @param os_id
      * @return
      */
-    public boolean delOrderitemsMsg(String os_id) {
-        long osid = Long.parseLong(os_id);
-        int i = orderitemsMapper.deleteOrderitemsMsgByOsid(osid);
+    public boolean delOrderitemsMsg(long os_id) {
+        int i = orderitemsMapper.deleteOrderitemsMsgByOsid(os_id);
         if(i == 1){
             return true;
         }else{
+            return false;
+        }
+    }
+
+    /*  提供给登录服务 */
+
+
+    /***
+     * 动态查询总订单
+     * 查询所有订单  传入空值
+     * 根据日期查询  只传入日期
+     * 根据状态查询  只传入状态
+     * 根据桌面id查询 只传入桌面id
+     * 根据总订单id查询 只传入总订单id
+     * 若要以上几种联合查询 请一起传入
+     * @param orderitems
+     * @return
+     */
+    public List<Orderitems> queryAllOrderitems(Orderitems orderitems) {
+        return orderitemsMapper.queryAllOrderitems(orderitems);
+    }
+
+    /***
+     * 根据总订单id查找子订单信息(并获取菜品信息)
+     * @param os_id
+     * @return
+     */
+    public List<Orderitem> queryItemByOsid(Long os_id) {
+        return orderitemMapper.queryItemByOsid(os_id);
+    }
+
+    /***
+     * 根据餐桌id和总订单状态总订单和所有子订单的信息 及其菜品信息
+     * @param d_id
+     * @return
+     */
+    public Orderitems queryOrderAndMenuMsgByDidAndPosition(Long d_id, long os_position) {
+        return orderitemsMapper.queryOrderAndMenuMsgByDidAndPosition(d_id,os_position);
+    }
+
+    /**
+     * 根据总订单id修改子订单的状态
+     *
+     * @param os_position
+     * @param os_id
+     * @return
+     */
+    public int updateOrderitemPositionByOsid(long os_position, long os_id) {
+        return orderitemMapper.updateOrderitemPositionByOsid(os_position,os_id);
+    }
+
+    /***
+     * 修改总订单状态
+     * @param os_id
+     * @return
+     */
+    public boolean updateOrderitemsPositionById(long os_position, long os_id) {
+        int i = orderitemsMapper.updateOrderitemsPositionById(os_position,os_id);
+        if(i == 1){
+            return true;
+        }else {
             return false;
         }
     }

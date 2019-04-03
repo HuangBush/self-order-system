@@ -45,4 +45,13 @@ public interface IMenuService {
      * @return
      */
      boolean updateMenu(Menu menu);
+
+    /**
+     * 查询所有菜品：传空值
+     * 查询推荐菜品：只传m_position == 2
+     * 查询各类型菜品 ： 只传入 m_type == ?
+     * @param menu
+     * @return
+     */
+    List<Menu> queryAllMenu(Menu menu);
 }

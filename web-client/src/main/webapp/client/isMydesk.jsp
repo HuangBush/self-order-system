@@ -29,7 +29,7 @@
   		<label class="layui-form-label" style="width: 95%;text-align: center;font-weight: 800;font-size: 16px;color:#ccc">时尚智能餐厅提醒您</label>
 	    <label class="layui-form-label" style="width: 95%;text-align: center;font-weight: 800;font-size: 16px;color:#ccc"">检测到${desk.d_name }正在被人使用</label>
 	    <br/><br/><br/>
-	  	<button class="layui-btn layui-btn-primary" style="width: 70%;margin-left: 15%"><a href="${pageContext.request.contextPath }/ismydesk.do">我是该桌的客人，要为该桌加菜。</a></button>
+	  	<button class="layui-btn layui-btn-primary" style="width: 70%;margin-left: 15%"><a href="${pageContext.request.contextPath }/addOrder">我是该桌的客人，要为该桌加菜。</a></button>
 	  	<br/><br/>
 	  	<button class="layui-btn " style="width: 70%;margin-left: 15%"><a href="changeTable.jsp">我不是此桌的客人，换另一桌。</a></button>
 	  	<div style="width: 100%;text-align: center;">

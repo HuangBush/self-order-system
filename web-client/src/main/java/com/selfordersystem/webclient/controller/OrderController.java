@@ -55,7 +55,8 @@ public class OrderController {
      */
     @RequestMapping(value = "order",method = RequestMethod.DELETE)
     @ResponseBody boolean deleteOrderitems(String os_id) {
-        return orderClient.deleteOrderitems(os_id);
+        long osid = Long.parseLong(os_id);
+        return orderClient.deleteOrderitems(osid);
     }
 
     /**

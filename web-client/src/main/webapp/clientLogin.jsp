@@ -31,7 +31,7 @@
   
   <body>
 	<div id="q" class="layui-col-xs18 layui-col-sm6 layui-col-md4">
-		<form class="layui-form" action="${pageContext.request.contextPath }/clientLogin.action">
+		<form class="layui-form" action="${pageContext.request.contextPath }/clientLogin">
 		 <label class="layui-form-label" style="width: 100%;text-align: center;">餐桌登录系统</label>
 		  <div class="layui-form-item">
 		    <label class="layui-form-label">输入框</label>
