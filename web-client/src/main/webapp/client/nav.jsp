@@ -78,30 +78,30 @@
 	      	<ul class="layui-nav layui-nav-tree layui-inline layui-bg-cyan " lay-filter="demo" style="margin-right: 10px;">
 	      	
 			  <li class="layui-nav-item " id="orderFood">
-			    <a href="${pageContext.request.contextPath }/queryRecommendMenu.do">人气推荐</a>
+			    <a href="${pageContext.request.contextPath }/getClassMenu?m_position=2">人气推荐</a>
 			  </li>
 			  <li class="layui-nav-item " id="food1">
-			    <a href="${pageContext.request.contextPath }/queryAllMenuByType.do?m_type=精致小炒">精致小炒</a>
+			    <a href="${pageContext.request.contextPath }/getClassMenu?m_type=精致小炒">精致小炒</a>
 			  </li>
 			  <li class="layui-nav-item " id="food2">
-			    <a href="${pageContext.request.contextPath }/queryAllMenuByType.do?m_type=美味大餐">美味大餐</a>
+			    <a href="${pageContext.request.contextPath }/getClassMenu?m_type=美味大餐">美味大餐</a>
 			  </li>
 			  <li class="layui-nav-item " id="food3">
-			    <a href="${pageContext.request.contextPath }/queryAllMenuByType.do?m_type=招牌干锅">招牌干锅</a>
+			    <a href="${pageContext.request.contextPath }/getClassMenu?m_type=招牌干锅">招牌干锅</a>
 			  </li>
 			  <li class="layui-nav-item" id="food4">
-			  	<a href="${pageContext.request.contextPath }/queryAllMenuByType.do?m_type=营养靓汤">营养靓汤</a>
+			  	<a href="${pageContext.request.contextPath }/getClassMenu?m_type=营养靓汤">营养靓汤</a>
 			  </li>
 			  <li class="layui-nav-item" id="drink">
-			    <a href="${pageContext.request.contextPath }/queryAllMenuByType.do?m_type=酒水饮料">酒水饮料</a>
+			    <a href="${pageContext.request.contextPath }/getClassMenu?m_type=酒水饮料">酒水饮料</a>
 			  </li>
 			  <c:if test="${again eq 'again'}">
 				  <li class="layui-nav-item" id="again">
-				    <a href="${pageContext.request.contextPath }/ismydesk.do">已付款菜品</a>
+				    <a href="${pageContext.request.contextPath }/addOrder">已付款菜品</a>
 				  </li>
 			  </c:if>
 			  <li class="layui-nav-item" id="mydesk">
-			  <a id="bage-before" href="${pageContext.request.contextPath }/mydesk.do">我的餐桌</a>
+			  <a id="bage-before" href="${pageContext.request.contextPath }/mydesk">我的餐桌</a>
 			  	<span id="bage" class="layui-badge" style="margin-left: 70px;;">${bageNum }</span>
 			  	<script type="text/javascript">
 			  		var num = $("#bage").text();
@@ -121,7 +121,7 @@
 	    	合计：<span id="mydesk-price"><c:if test="${os.os_allprice == null }">0</c:if>${os.os_allprice }</span>元
 	    </div>
 	    <div style="margin-left: 20px;height: 50px;" class="site-demo-button" id="layerDemo">
-			<button  id="empty" class="layui-btn layui-btn-primary" data-method="confirmTrans"><a href="${pageContext.request.contextPath }/isEmpty.do?os_id=${os.os_id}">清空菜单</a></button>
+			<button  id="empty" class="layui-btn layui-btn-primary" data-method="confirmTrans"><a href="${pageContext.request.contextPath }/isEmpty?os_id=${os.os_id}">清空菜单</a></button>
 			<button id="pay" data-method="notice" class="layui-btn"> 立即结算</button>
 		</div>
 	  </div>

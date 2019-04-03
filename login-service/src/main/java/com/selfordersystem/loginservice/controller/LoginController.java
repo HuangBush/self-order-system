@@ -243,7 +243,7 @@ public class LoginController {
         if(os != null){
             System.out.println("查询到需要清空的付尾款的菜单");
             //修改所有未付款的子订单信息
-            int k = orderService.updateOrderitemPositionByOsid(3,os_id);
+            int k = orderService.updateOrderitemPositionByOsid((long) 3,os_id);
             if (k == 1){
                 System.out.println("已将所有子订单信息修改为状态 3------------");
                 //继续修改总订单状态

@@ -133,13 +133,14 @@ public class OrderController {
     /**
      * 根据总订单id修改子订单的状态
      *
-     * @param os_position
+     * @param oi_position
      * @param os_id
      * @return
      */
     @RequestMapping("updateOrderitemPositionByOsid")
-    int updateOrderitemPositionByOsid(@RequestParam("os_position") long os_position, @RequestParam("os_id") long os_id) {
-        return orderServiceImpl.updateOrderitemPositionByOsid(os_position,os_id);
+    int updateOrderitemPositionByOsid(@RequestParam("oi_position") long oi_position, @RequestParam("os_id") long os_id) {
+        System.out.println("根据总订单id修改子订单的状态");
+        return orderServiceImpl.updateOrderitemPositionByOsid(oi_position,os_id);
     }
 
     /***

@@ -172,6 +172,7 @@ public class LoginController {
         }else {
             //获取总订单中的子订单 （子订单中要包含菜品的信息）
             List<Orderitem> oiList = os.getOiList();
+            os.setos_id(oiList.get(0).getos_id());
             //计算该总订单各个子订单菜品的总数量
             long bageNum = 0;
             for (Orderitem orderitem : oiList) {
