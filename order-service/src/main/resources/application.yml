@@ -10,7 +10,7 @@ spring:
   application:
     name: service-order
   jackson:
-    date-format: yyyy/MM/dd
+    date-format: yyyy-MM-dd
     time-zone: GMT+8
   http:
     encoding:

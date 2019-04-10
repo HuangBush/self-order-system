@@ -57,7 +57,7 @@ public interface DeskMapper {
      * 查询所有桌子
      * @return
      */
-    @Select("select * from desk")
+    @Select("select * from desk where d_position != 3")
     List<Desk> queryAllDesk();
 
 

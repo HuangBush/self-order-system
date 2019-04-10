@@ -1,8 +1,11 @@
 package com.selfordersystem.webclient.client;
 
 import com.selfordersystem.common.entity.Desk;
+import com.selfordersystem.common.entity.Orderitems;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -30,4 +33,18 @@ public interface DeskClient {
 
     @GetMapping("updateDesk")
     boolean updateDesk(Desk desk);
+
+    /**
+     * 根据id查询桌面
+     * @return
+     */
+    @RequestMapping("querytDeskById")
+    public Orderitems querytDeskById(Desk desk);
+
+    /**
+     * 根据修改桌子状态
+     * @param d_id
+     */
+    @RequestMapping("updateDeskPositionByName")
+    public boolean updateDeskPosition(@RequestParam("d_id") long d_id);
 }

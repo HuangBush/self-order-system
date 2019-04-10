@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/layui/css/layui.css">
   </head>
   
-  <body style="background-image: url(/food/img/papper1.jpg);background-size:cover">
+  <body style="background-image: url(/img/papper1.jpg);background-size:cover">
    <div  style="width:379.8px;height:425px;">
    	<!-- 未开台桌台详单 -->
      	<div  style="margin:15px 25px" >
@@ -58,8 +58,8 @@
 		$('#delete').click(function(){
 		var name='${desk.d_name}';
               $.ajax({
-                url:"${pageContext.request.contextPath }/deleteDesk.action?name="+name,
-                type:"post",
+                url:"${pageContext.request.contextPath }/desk?d_name="+name,
+                type:"delete",
                 processData:false,
                 contentType:false,
                 success:function(){
@@ -94,17 +94,19 @@
          $('#buy').click(function(){
 			var did = '${desk.d_id}';
               $.ajax({
-                url:"${pageContext.request.contextPath }/updateDeskPositionByName.action?d_id="+did,
-                type:"post",
+                url:"${pageContext.request.contextPath }/desk?d_id="+did,
+                type:"put",
                // data:os_id, 
                 processData:false,
                 contentType:false,
-                success:function(){
+                success:function(res){
+					alert("++++++++++++++++++++"+res);
                 },
-                error:function(){
+                error:function(res){
+					alert("++++++++++++++++++++"+res);
                 }
             });        
-		alert("销台成功！");
+		//alert("销台成功！");
 		parent.layer.closeAll();//关闭弹窗
 		});
 		
@@ -112,14 +114,14 @@
 		$('#ma').click(function(){
 		var d_id = '${desk.d_id}';
               $.ajax({
-                url:"${pageContext.request.contextPath }/createQRcode.action?d_id="+d_id,
+                url:"${pageContext.request.contextPath }/createQRcode?d_id="+d_id,
                 type:"post",
                 processData:false,
                 contentType:false,
                 success:function(res){
                 	alert("-------------------"+res);
                 	$('#desk').html("");
-                	$('#desk').append('<center><img  src="${pageContext.request.contextPath }/'+res+'"width="300px",height="300px;"></center>');
+                	$('#desk').append('<center><img  src="${pageContext.request.contextPath }'+res+'"width="300px",height="300px;"></center>');
                 },
                 error:function(res){
                 	alert("++++++++++++++++++++"+res);

@@ -20,12 +20,12 @@
   
   </head>
   
-  <body style="background-image: url(/food/img/papper1.jpg);background-size:cover">
+  <body style="background-image: url(/img/papper1.jpg);background-size:cover">
    <div  style="width:379.8px;height:430px;">
    
    	<!-- 已开台桌台详单 -->
      		<div style="margin:15px 25px">
-     			<div ><center><h2>桌号：${d_name}</h2></center></div>
+     			<div ><center><h2>桌号：${desk.d_name}</h2></center></div>
      			<div>开台时间:
      				<f:formatDate value="${order.os_regtime}" pattern="yyyy-MM-dd HH:mm"/>
      			</div>
@@ -88,11 +88,11 @@
 			layer.tips('请连接打印机',that);
 		});
 		$('#buy').click(function(){
-			var os_id = '${order.getOiList().get(0).getos_id()}';
-			alert(os_id);
+			var d_id = '${desk.d_id}';
+			alert(d_id+"1111111111");
               $.ajax({
-                url:"${pageContext.request.contextPath }/accountOrder.action?os_id="+os_id,
-                type:"post",
+                url:"${pageContext.request.contextPath }/desks?d_id="+d_id,
+                type:"delete",
                // data:os_id, 
                 processData:false,
                 contentType:false,

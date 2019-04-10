@@ -57,7 +57,7 @@
 	$("#bt").click(function(){
             var form = new FormData(document.getElementById("fm"));
               $.ajax({
-                url:"${pageContext.request.contextPath }/addDesk.action",
+                url:"${pageContext.request.contextPath }/desk",
                 type:"post",
                 data:form,
                 processData:false,

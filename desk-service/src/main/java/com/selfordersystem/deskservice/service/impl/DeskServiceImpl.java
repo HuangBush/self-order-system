@@ -58,8 +58,6 @@ public class DeskServiceImpl implements IDsekService{
 
     @Override
     public boolean deleteDesk(Desk desk) {
-        //先查看桌子的状态，如果不是空闲，就不允许删除
-        if(desk.getd_position() == 0){
             int i = deskMapper.deleteDesk(desk);
             if (i == 1){
                 System.out.println("删除桌子成功");
@@ -68,10 +66,6 @@ public class DeskServiceImpl implements IDsekService{
                 System.out.println("删除桌子失败");
                 return false;
             }
-        }else{
-            System.out.println("删除桌子失败,因为餐桌状态不为0");
-            return false;
-        }
     }
 
     @Override
@@ -79,6 +73,7 @@ public class DeskServiceImpl implements IDsekService{
         int i = deskMapper.updateDesk(desk);
         if(i == 1){
             System.out.println("修改成功");
+            return true;
         }
         return false;
     }

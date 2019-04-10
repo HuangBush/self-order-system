@@ -10,10 +10,12 @@ spring:
   application:
     name: client-web
   jackson:
-    date-format: yyyy/MM/dd
+    date-format: yyyy-MM-dd
     time-zone: GMT+8
   http:
     encoding:
       charset: UTF-8
       enabled: true
       force: true
+  mvc:
+    date-format: yyyy-MM-dd

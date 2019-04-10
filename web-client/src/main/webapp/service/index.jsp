@@ -52,7 +52,7 @@
 			               offset: '65px',
 			               move: false,
 			               title: "桌台信息",
-			               content:'${pageContext.request.contextPath }/querytDeskById.action?d_id='+id,
+			               content:'${pageContext.request.contextPath }/desk?d_id='+id,
 			               end: function() {
 	        				//刷新页面, 
 							location.reload();
@@ -70,7 +70,7 @@
 			               offset: '65px',
 			               move: false,
 			               title: "桌台信息",
-			               content:'${pageContext.request.contextPath }/querytDeskById.action?d_id='+id,
+			               content:'${pageContext.request.contextPath }/desk?d_id='+id,
 			               end: function() {
 	        				//刷新页面, 
 							location.reload();

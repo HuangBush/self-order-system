@@ -10,7 +10,7 @@ spring:
   application:
     name: service-login
   jackson:
-    date-format: yyyy/MM/dd
+    date-format: yyyy-MM-dd
     time-zone: GMT+8
   http:
     encoding:
@@ -25,5 +25,5 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:
-  mapper-locations: classpath:mapper/*   # mapper¡¤??
+  mapper-locations: classpath:mapper/*   # mapperï¿½ï¿½??
 
