@@ -218,7 +218,7 @@ public class LoginController {
      * @return
      */
     @RequestMapping("continueOrder")
-    Orderitems continueOrder(@RequestBody Desk desk){
+    public Orderitems continueOrder(@RequestBody Desk desk){
         System.out.println("不小心退出继续点餐");
         //根据餐桌信息获取餐桌di 并查询状态为0 未付款的订单  信息
         Orderitems os = orderService.queryOrderAndMenuMsgByDidAndPosition(desk.getd_id(),0);

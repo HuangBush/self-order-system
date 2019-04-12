@@ -18,7 +18,7 @@ import java.util.Map;
  * @description
  * @date 2019/4/1
  */
-@FeignClient(value = "service-zuul/api-login/",fallback = LoginClientFallBack.class)
+@FeignClient(value = "service-zuul/api-login/")
 public interface LoginClient {
 
     /***

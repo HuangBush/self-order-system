@@ -37,6 +37,7 @@ public class DeskController {
      * */
     @RequestMapping(value = "Desks",method = RequestMethod.GET)
     public String getAllDesk(Model model){
+        System.out.println("进入后台管理主页——————————————");
         model.addAttribute("list",deskClient.getAllDesk());
         return "service/index.jsp";
     }

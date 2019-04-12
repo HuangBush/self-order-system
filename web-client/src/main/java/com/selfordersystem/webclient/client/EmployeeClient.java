@@ -22,6 +22,7 @@ import java.util.List;
 @FeignClient(value = "service-zuul/api-employee/",fallback= EmployeeClientFallBack.class)
 public interface EmployeeClient {
 
+
     /**
      * 获取分页中的所有员工信息
      * @param page

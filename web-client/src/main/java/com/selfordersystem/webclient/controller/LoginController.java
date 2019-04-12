@@ -138,7 +138,7 @@ public class LoginController {
      * 我的餐桌继续加餐
      * @return
      */
-    @RequestMapping("addOrder")
+    @RequestMapping(value = "addOrder",method = RequestMethod.GET)
     public String addOrder(HttpSession session,Model model){
         Desk desk = (Desk) session.getAttribute("desk");
         Orderitems os = loginClient.addOrder(desk);
@@ -165,7 +165,7 @@ public class LoginController {
         System.out.println("获取我的餐桌信息");
         Desk desk = (Desk) session.getAttribute("desk");
         Orderitems os = loginClient.continueOrder(desk);
-        System.out.println("++++++++++++++"+os.toString());
+       // System.out.println("++++++++++++++"+os.toString());
         if (os == null) {
             System.out.println("未查询到总订单。请联系前台服务员");
             model.addAttribute("msg", "未查询到总订单。请联系前台服务员");

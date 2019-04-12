@@ -114,6 +114,7 @@ public class MealController {
             model.addAttribute("bageNum", bageNum);
             model.addAttribute("oiList", oiList);
             model.addAttribute("os", orderitems);
+            System.out.println("正在进入我的餐桌");
             return "client/mydesk.jsp";
         }
     }

@@ -1,0 +1,20 @@
+server:
+  port: 8880
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+
+
+spring:
+  application:
+    name: service-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/HuangBush/springcloud-config
+          search-paths: self-order-system-config
+          username:
+          password:
+      label: master
