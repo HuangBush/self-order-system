@@ -4,6 +4,7 @@ import com.selfordersystem.common.entity.Layui;
 import com.selfordersystem.common.entity.Orderitems;
 import com.selfordersystem.common.entity.OredritemsTableModel;
 import com.selfordersystem.common.utils.PageUtils;
+import com.selfordersystem.webclient.client.fallback.OrderClientFallBack;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @description
  * @date 2019/4/1
  */
-@FeignClient("service-zuul/api-order/")
+@FeignClient(value = "service-zuul/api-order/",fallback = OrderClientFallBack.class)
 public interface OrderClient {
 
     @RequestMapping("getOrderitemsPage")

@@ -4,6 +4,8 @@ import com.selfordersystem.common.entity.EmpTableModel;
 import com.selfordersystem.common.entity.Employee;
 import com.selfordersystem.common.entity.Layui;
 import com.selfordersystem.common.utils.PageUtils;
+import com.selfordersystem.webclient.client.fallback.DeskClientFallBackFactory;
+import com.selfordersystem.webclient.client.fallback.EmployeeClientFallBack;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +19,7 @@ import java.util.List;
  * @description
  * @date 2019/3/31
  */
-@FeignClient("service-zuul/api-employee/")
+@FeignClient(value = "service-zuul/api-employee/",fallback= EmployeeClientFallBack.class)
 public interface EmployeeClient {
 
     /**

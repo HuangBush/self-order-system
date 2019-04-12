@@ -34,13 +34,12 @@ public class DeskController {
      * 查询所有餐桌
      * @param model
      * @return
-     *//*
+     * */
     @RequestMapping(value = "Desks",method = RequestMethod.GET)
     public String getAllDesk(Model model){
         model.addAttribute("list",deskClient.getAllDesk());
         return "service/index.jsp";
     }
-*/
     /***
      * 消台
      * @return
@@ -51,6 +50,9 @@ public class DeskController {
        /* Desk desk = new Desk();
         desk.setd_id(d_id);*/
         Desk d = deskClient.getDesk(desk);
+        if(d == null){
+            System.out.println("修改失败");
+        }
         boolean isL = loginClient.leaveDesk(d);
         if(isL){
             System.out.println("餐桌状态修改成功++++++++++++++====");

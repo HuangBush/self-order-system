@@ -4,6 +4,7 @@ import com.selfordersystem.common.entity.Layui;
 import com.selfordersystem.common.entity.Menu;
 import com.selfordersystem.common.utils.FileUploadUtil;
 import com.selfordersystem.common.utils.PageUtils;
+import com.selfordersystem.webclient.client.fallback.MenuClientFallBack;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,7 +20,7 @@ import java.util.List;
  * @description
  * @date 2019/3/31
  */
-@FeignClient("service-zuul/api-menu/")//使用网关地址
+@FeignClient(value = "service-zuul/api-menu/",fallback = MenuClientFallBack.class)//使用网关地址
 public interface MenuClient {
 
     @GetMapping("getMenuPage")

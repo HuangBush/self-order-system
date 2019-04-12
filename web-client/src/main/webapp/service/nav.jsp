@@ -30,7 +30,7 @@
 	    <!-- 头部区域（可配合layui已有的水平导航） -->
 	    <ul class="layui-nav layui-layout-left">
 	      <li class="layui-nav-item">
-	      	<a href="${pageContext.request.contextPath }/countDesk.action">
+	      	<a href="${pageContext.request.contextPath }/Desks">
 	      		<i class="layui-icon layui-icon-home" style="font-size: 22px;"></i>
 	      	</a>
 	      </li>

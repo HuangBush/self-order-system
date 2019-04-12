@@ -19,3 +19,8 @@ spring:
       force: true
   mvc:
     date-format: yyyy-MM-dd
+
+#开启断路器
+feign:
+  hystrix:
+    enabled: true

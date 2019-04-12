@@ -46,7 +46,7 @@
       <img id="background" src="/hotel/img/404background.jpg" />
       <div id="content">
         <h1>页面君迷路了</h2>
-        <h2>对不起，页面不存在或被移动了</h2>
+        <h2>对不起，请稍后进行访问</h2>
         <h2>${msg }</h2>
       </div>
     </div>

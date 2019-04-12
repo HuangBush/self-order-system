@@ -3,6 +3,7 @@ package com.selfordersystem.webclient.client;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
 import com.selfordersystem.common.entity.Orderitems;
+import com.selfordersystem.webclient.client.fallback.PayClientFallBack;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import java.util.Map;
  * @description
  * @date 2019/4/3
  */
-@FeignClient("service-zuul/api-pay/")
+@FeignClient(value = "service-zuul/api-pay/",fallback = PayClientFallBack.class)
 public interface PayClient {
 
     /***

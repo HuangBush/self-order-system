@@ -2,6 +2,7 @@ package com.selfordersystem.webclient.client;
 
 import com.selfordersystem.common.entity.Desk;
 import com.selfordersystem.common.entity.Orderitems;
+import com.selfordersystem.webclient.client.fallback.LoginClientFallBack;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import java.util.Map;
  * @description
  * @date 2019/4/1
  */
-@FeignClient("service-zuul/api-login/")
+@FeignClient(value = "service-zuul/api-login/",fallback = LoginClientFallBack.class)
 public interface LoginClient {
 
     /***

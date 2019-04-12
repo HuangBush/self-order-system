@@ -56,8 +56,8 @@ public class LoginController {
             session.setAttribute("admin", e);
             session.removeAttribute("emp");
             //进入主页
-            model.addAttribute("list",deskClient.getAllDesk());
-            return "service/index.jsp";
+           // model.addAttribute("list",deskClient.getAllDesk());
+            return "redirect:Desks";
         }else if(map.containsKey(1)){
             System.out.println("员工登录成功");
             //取出值 存入Session
@@ -68,7 +68,7 @@ public class LoginController {
             session.removeAttribute("admin");
             //进入主页
             model.addAttribute("list",deskClient.getAllDesk());
-            return "service/index.jsp";
+            return "redirect:Desks";
         }else {
             System.out.println("登录失败++++");
             return "redirect:service/login.jsp";
