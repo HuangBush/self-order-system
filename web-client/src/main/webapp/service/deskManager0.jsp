@@ -100,10 +100,10 @@
                 processData:false,
                 contentType:false,
                 success:function(res){
-					alert("++++++++++++++++++++"+res);
+					//alert("++++++++++++++++++++"+res);
                 },
                 error:function(res){
-					alert("++++++++++++++++++++"+res);
+					//alert("++++++++++++++++++++"+res);
                 }
             });        
 		//alert("销台成功！");
@@ -119,12 +119,12 @@
                 processData:false,
                 contentType:false,
                 success:function(res){
-                	alert("-------------------"+res);
+                	//alert("-------------------"+res);
                 	$('#desk').html("");
                 	$('#desk').append('<center><img  src="${pageContext.request.contextPath }'+res+'"width="300px",height="300px;"></center>');
                 },
                 error:function(res){
-                	alert("++++++++++++++++++++"+res);
+                	//alert("++++++++++++++++++++"+res);
                 	$('#desk').html("");
                 	$('#desk').append('<img  src="${pageContext.request.contextPath }/'+res+'">');
                 }

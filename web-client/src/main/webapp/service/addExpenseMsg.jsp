@@ -97,7 +97,7 @@
         var ex_regtime =$("#date1").val();
         var ex_other =$("#ex_other").val();
         var ex_price =$("#ex_price").val();
-        alert(ex_name+"|"+ex_other+"|"+ex_price+"|"+ex_regtime);
+        //alert(ex_name+"|"+ex_other+"|"+ex_price+"|"+ex_regtime);
 //             var req = new XMLHttpRequest();
 //             req.open("post", "${pageContext.request.contextPath }/updateEmployeeMsg.action", false);
 //             req.send(form);

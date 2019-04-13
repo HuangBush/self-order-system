@@ -14,6 +14,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 /**
  * @author huangyifeng.test@hand-china.com
@@ -36,7 +43,7 @@ public class DeskController {
      * @return
      * */
     @RequestMapping(value = "Desks",method = RequestMethod.GET)
-    public String getAllDesk(Model model){
+    public String getAllDesk(Model model) throws UnknownHostException, SocketException {
         System.out.println("进入后台管理主页——————————————");
         model.addAttribute("list",deskClient.getAllDesk());
         return "service/index.jsp";
@@ -145,8 +152,27 @@ public class DeskController {
         d1.setd_id(d_id);
         Desk desk = deskClient.getDesk(d1);
         System.out.println("_____________"+desk.getd_name());
-
-        String text = "http://192.168.43.112:8082/food/clientLogin.action?d_id="+desk.getd_id()+"&d_password="+desk.getd_password(); //一号桌登录
+        //InetAddress addr = InetAddress.getLocalHost();
+        //获取所有的ipv4地址  要拿到最后一个地址
+        List<String> addrs = new ArrayList<String>();
+        Enumeration<NetworkInterface> IFaces = NetworkInterface.getNetworkInterfaces();
+        while (IFaces.hasMoreElements()) {
+            NetworkInterface fInterface = IFaces.nextElement();
+            if (!fInterface.isVirtual() && !fInterface.isLoopback() && fInterface.isUp()) {
+                Enumeration<InetAddress> adds = fInterface.getInetAddresses();
+                while (adds.hasMoreElements()) {
+                    InetAddress address = adds.nextElement();
+                    byte[] bs = address.getAddress();
+                    if (bs.length == 4)
+                        System.out.println("ip__________"+address.getHostAddress());
+                        addrs.add(address.getHostAddress());
+                }
+            }
+        }
+        //获取倒数第二个ip地址  因为就是无线地址
+        String hostAddr = addrs.get(addrs.size()-2);
+        System.out.println("Local HostAddress:qqqqqqqqq "+hostAddr);
+        String text = "http://"+hostAddr+":8088/clientLogin?d_id="+desk.getd_id()+"&d_password="+desk.getd_password(); //一号桌登录
         System.out.println("随机码： " + text);
         int width = 500; // 二维码图片的宽
         int height = 500; // 二维码图片的高

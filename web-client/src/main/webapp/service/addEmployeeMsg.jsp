@@ -168,7 +168,6 @@ layui.use('form', function(){
                 contentType:"application/json;charset=utf-8",
                 data:JSON.stringify({e_name:e_name,e_password:e_password,e_job:e_job,e_regdate:e_regdate,e_address:e_address,e_salary:e_salary,e_tel:e_tel}),
                 success:function(data){
-               	 alert("添加成功----1111111111111");
                 	//alert(data+"添加成功");
                 	layer.close(index);
                 	//layer.closeAll();

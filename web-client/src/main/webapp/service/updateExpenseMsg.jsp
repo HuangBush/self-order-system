@@ -98,7 +98,7 @@ layui.use('form', function(){
 	$("#btn-update").click(function(){
 			//layer.closeAll('iframe');
             var form = new FormData(document.getElementById("expense"));
-            alert("form----"+form);
+            //alert("form----"+form);
 //             var req = new XMLHttpRequest();
 //             req.open("post", "${pageContext.request.contextPath }/updateExpenseMsg.action", false);
 //             req.send(form);

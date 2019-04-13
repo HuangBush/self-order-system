@@ -89,7 +89,7 @@
 		});
 		$('#buy').click(function(){
 			var d_id = '${desk.d_id}';
-			alert(d_id+"1111111111");
+			//alert(d_id+"1111111111");
               $.ajax({
                 url:"${pageContext.request.contextPath }/desks?d_id="+d_id,
                 type:"delete",

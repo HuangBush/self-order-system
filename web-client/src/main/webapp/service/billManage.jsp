@@ -215,7 +215,7 @@ layui.use('table', function(){
           });
         });
     }else if(obj.event === 'edit'){
-    alert(data.os_id+("--------------"));
+    //alert(data.os_id+("--------------"));
     	   layer.open({
                //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                type: 2,

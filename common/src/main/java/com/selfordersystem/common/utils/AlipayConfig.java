@@ -1,5 +1,12 @@
 package com.selfordersystem.common.utils;
 
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+
 public class AlipayConfig {
 	// 商户appid
 	public static String APPID = "2016092700610065";
@@ -10,7 +17,16 @@ public class AlipayConfig {
 	public static String notify_url = "http://192.168.43.112:8088/client/notify_url.jsp";
 	// 页面跳转同步通知页面路径 需http://或者https://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问 商户可以自定义同步跳转地址
 	//"http://192.168.1.108:8082/food/returnMsg.action"    192.168.43.112
-	public static String return_url = "http://192.168.43.112:8088/returnMsg.do";
+	public static String return_url;
+
+	static {
+		try {
+			return_url = "http://"+netAddr()+":8088/returnMsg.do";
+		} catch (SocketException e) {
+			e.printStackTrace();
+		}
+	}
+
 	// 请求网关地址
 	public static String URL = "https://openapi.alipaydev.com/gateway.do";
 	// 编码
@@ -38,4 +54,28 @@ public class AlipayConfig {
 	证件号码496266190205272619
 	账户余额
 	95859.00充值*/
+
+	public static String netAddr() throws SocketException {
+		//InetAddress addr = InetAddress.getLocalHost();
+		//获取所有的ipv4地址  要拿到最后一个地址
+		List<String> addrs = new ArrayList<String>();
+		Enumeration<NetworkInterface> IFaces = NetworkInterface.getNetworkInterfaces();
+		while (IFaces.hasMoreElements()) {
+			NetworkInterface fInterface = IFaces.nextElement();
+			if (!fInterface.isVirtual() && !fInterface.isLoopback() && fInterface.isUp()) {
+				Enumeration<InetAddress> adds = fInterface.getInetAddresses();
+				while (adds.hasMoreElements()) {
+					InetAddress address = adds.nextElement();
+					byte[] bs = address.getAddress();
+					if (bs.length == 4)
+						System.out.println("ip__________"+address.getHostAddress());
+					addrs.add(address.getHostAddress());
+				}
+			}
+		}
+		//获取倒数第二个ip地址  因为就是无线地址
+		String hostAddr = addrs.get(addrs.size()-2);
+		System.out.println("获取到的ip地址为："+hostAddr);
+		return hostAddr;
+	}
 }
